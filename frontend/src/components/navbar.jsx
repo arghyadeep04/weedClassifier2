@@ -132,10 +132,10 @@ function NavBarMUI({setUserToken,usertoken,setHistory,setMessage,setAlertVisible
 
               
           </Box>
-          {
+          {/* {
               usertoken?
             <div className='text-white px-4 md:px-20 text-center w-max'>Welcome <span className='font-bold'>{username}</span></div>:<></>
-            }
+            } */}
 
 
           <Button

@@ -1,5 +1,5 @@
 export const loginUser=async(form)=>{
-    let respons=await fetch(`http://localhost/user/login`, {
+    let respons=await fetch(`http://localhost/users/login`, {
         method: 'POST',
         headers: {
             'Accept': '*/*',
@@ -18,7 +18,7 @@ export const loginUser=async(form)=>{
     return json
 }
 export const signupUser=async(form)=>{
-    let respons=await fetch(`http://localhost/user/signup`, {
+    let respons=await fetch(`http://localhost/users/register`, {
         method: 'POST',
         headers: {
             'Accept': '*/*',
@@ -38,7 +38,7 @@ export const signupUser=async(form)=>{
 }
 
 export const addHistory=async(token,object)=>{
-    let respons=await fetch(`http://localhost/user/addtohistory`, {
+    let respons=await fetch(`http://localhost/users/addtohistory`, {
         method: 'POST',
         headers: {
             'Accept': '*/*',
@@ -59,7 +59,7 @@ export const addHistory=async(token,object)=>{
 }
 
 export const getHistory=async(token)=>{
-    let respons=await fetch(`http://localhost/user/history`, {
+    let respons=await fetch(`http://localhost/users/history`, {
         method: 'GET',
         headers: {
             'Accept': '*/*',

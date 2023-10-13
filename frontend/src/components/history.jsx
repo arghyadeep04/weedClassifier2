@@ -7,18 +7,24 @@ import { setMessage, setVisible } from '../redux/alert/alert.action'
 import { selectuserToken } from '../redux/user/user.selector'
 import LoadSpinner from './loadspinner'
 import { connect } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const History=({usertoken,setAlertMessage,setAlertVisible})=> {
     const [loading,setLoading]=useState(false)
-    const [history,setHistory]=useState([{date:Date("13/10/2023"),imageUrl:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Stairs_with_weed.jpg/1200px-Stairs_with_weed.jpg",output:"No weeds found No weeds found No weeds found No weeds found No weeds found No weeds found No weeds found No weeds found"}])
+    const [history,setHistory]=useState([])
+    const navigate=useNavigate()
     useEffect(()=>{
+      if(!usertoken){
+        navigate("/users/login")
+        return
+      }
       setLoading(true)
       getHistory(usertoken).then((json)=>{
         if(json.networkerror){
           setAlertMessage({msg:"Can't get history , Network Error",type:"error"})
           setAlertVisible(true)
         }else{
-          setHistory(json.history)
+          setHistory(json)
         }
         setLoading(false)
       }).catch(err=>{
@@ -26,7 +32,7 @@ const History=({usertoken,setAlertMessage,setAlertVisible})=> {
         setAlertVisible(true)
         setLoading(false)
       })
-    },[])
+    },[usertoken])
   return (
     <>
     <div className='text-3xl text-center text-blue-500 my-4'>Your Past Searches</div><hr className='h-3 border-y-blue-950'/>
@@ -35,7 +41,7 @@ const History=({usertoken,setAlertMessage,setAlertVisible})=> {
       <HistoryTable items={history}/>
       {
         history.map(e=>{
-            return <div className='flex justify-around'><HistoryCard date={e.date} imageUrl={e.imageUrl} output={e.output}/></div>
+            return <div className='flex justify-around'><HistoryCard date={e.Date} imageUrl={e.inputImageURL} output={e.output}/></div>
         })
       }
     </div>

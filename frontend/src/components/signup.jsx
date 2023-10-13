@@ -28,7 +28,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        NewsApp
+        Weeds
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -65,16 +65,24 @@ const SignUp=({setUserToken,setHistory,setAlertMessage,setAlertVisible,usertoken
           if(!json){
             setAlertMessage({msg:"SignUp Failed, Network Error",type:"error"})
             setAlertVisible(true)
+            setLoading(false)
           return
         }
         if(json.networkerror){
           setAlertMessage({msg:"SignUp Failed, Network Error",type:"error"})
           setAlertVisible(true)
+          setLoading(false)
+          return
+        }
+        if(json.error){
+          setAlertMessage({msg:"SignUp Failed, Username alredy exist",type:"error"})
+          setAlertVisible(true)
+          setLoading(false)
           return
         }
         if(json.token){
-          setuserToken(json.token)
-          setAlertMessage({msg:"Succesfully logged in",type:"success"})
+          setUserToken(json.token)
+          setAlertMessage({msg:"Succesfully signed up and logged in",type:"success"})
           setAlertVisible(true)
         }else{
           setAlertMessage({msg:"SignUp Failed, Username or password is incorrect",type:"error"})
@@ -118,7 +126,7 @@ const SignUp=({setUserToken,setHistory,setAlertMessage,setAlertVisible,usertoken
               fullWidth
               id="username"
               label="Username"
-              name="username"
+              name="Username"
               autoFocus
               onChange={handleChange}
             />
@@ -128,7 +136,7 @@ const SignUp=({setUserToken,setHistory,setAlertMessage,setAlertVisible,usertoken
               fullWidth
               id="Email"
               label="Email Address"
-              name="email"
+              name="Email"
               autoFocus
               onChange={handleChange}
             />
@@ -136,7 +144,7 @@ const SignUp=({setUserToken,setHistory,setAlertMessage,setAlertVisible,usertoken
               margin="normal"
               required
               fullWidth
-              name="password"
+              name="Password"
               label="Password"
               type="password"
               id="password"

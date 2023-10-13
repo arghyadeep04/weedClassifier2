@@ -34,12 +34,13 @@ export default function HistoryCard({date,imageUrl,output}) {
   };
 
   return (
-    <div className='md:hidden px-3'>
+    <div className='md:hidden px-3 my-3 border-[2px] rounded-xl'>
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
-    
-        title={date.toString().slice(0,15)}
-        subheader={date.toString().slice(16,25)}
+        // .toString().slice(0,15)
+        title={`Date : ${date.toString().split("T")[0]}`}
+        subheader={`Time : ${date.toString().split("T")[1].slice(0,-5)}`}
+        // .toString().slice(16,25)
       />
       {/* <CardMedia
         component="img"

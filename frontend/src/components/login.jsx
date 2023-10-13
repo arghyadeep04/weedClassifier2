@@ -64,15 +64,17 @@ const SignIn=({setUserToken,setAlertMessage,setAlertVisible,usertoken})=> {
           if(!json){
             setAlertMessage({msg:"Login Failed, Network Error",type:"error"})
             setAlertVisible(true)
+            setLoading(false)
           return
         }
         if(json.networkerror){
           setAlertMessage({msg:"Login Failed, Network Error",type:"error"})
           setAlertVisible(true)
+          setLoading(false)
           return
         }
         if(json.token){
-          setuserToken(json.token)
+          setUserToken(json.token)
           setAlertMessage({msg:"Succesfully logged in",type:"success"})
           setAlertVisible(true)
         }else{
@@ -117,7 +119,7 @@ const SignIn=({setUserToken,setAlertMessage,setAlertVisible,usertoken})=> {
               fullWidth
               id="username"
               label="Username"
-              name="username"
+              name="Username"
               autoFocus
               onChange={handleChange}
             />
@@ -125,7 +127,7 @@ const SignIn=({setUserToken,setAlertMessage,setAlertVisible,usertoken})=> {
               margin="normal"
               required
               fullWidth
-              name="password"
+              name="Password"
               label="Password"
               type="password"
               id="password"
