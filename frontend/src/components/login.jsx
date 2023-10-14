@@ -75,7 +75,7 @@ const SignIn=({setUserToken,setAlertMessage,setAlertVisible,usertoken})=> {
         }
         if(json.token){
           setUserToken(json.token)
-          setAlertMessage({msg:"Succesfully logged in",type:"success"})
+          setAlertMessage({msg:`Succesfully logged in, Welcome ${json.username}`,type:"success"})
           setAlertVisible(true)
         }else{
           setAlertMessage({msg:"Login Failed, Username or password is incorrect",type:"error"})

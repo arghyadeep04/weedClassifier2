@@ -6,10 +6,10 @@ import { createStructuredSelector } from 'reselect'
 
 const Output=({output,outputloading})=> {
   return (
-    <div className='border-[2px] border-blue-400 p-3 rounded-2xl bg-blue-800'>
-    <h1 className='text-white mt-8 text-3xl font-bold mb-3 bg-red-900 p-3 rounded-full'>Output : </h1><br />
+    <div className='border-[2px] border-blue-400 p-3 rounded-2xl bg-blue-700'>
+    <h1 className='text-white mt-5 text-3xl font-bold mb-3 bg-orange-600 p-3 rounded-full'>Output : </h1><br />
         <LoadSpinner loading={outputloading}/>
-    <div className='flex justify-around mt-7'>
+    <div className='flex justify-around mt-16'>
       <div className='w-[85vw] h-[40vh] md:w-[50vw] border-[4px] rounded-xl border-green-500 flex justify-around'>
         {
             output?

@@ -10,7 +10,7 @@ const secret = "secret";
 
 userRouter.post('/register',async(req,res)=>{
     let inp=req.body;
-    console.log(inp)
+    // console.log(inp)
     await User.syncIndexes()
     let hash=await bcrypt.hash(inp.Password, 2);
     inp.Password=hash
@@ -30,7 +30,7 @@ userRouter.post('/register',async(req,res)=>{
 
 userRouter.post('/login',async(req,res)=>{
     const {Username,Password}=req.body;
-    console.log(Username,Password);
+    // console.log(Username,Password);
    let myuser= await User.findOne({Username})
    if(!myuser){
     res.status(400).send({error:"Username does'nt exist"})

@@ -6,12 +6,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import NavigateTopButton from './navigateTopButton';
 
 
 
 export default function HistoryTable({items}) {
   return (
     <div className='hidden md:block mx-2 border-[2px] border-blue-400 rounded-lg'>
+  <NavigateTopButton/>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -35,8 +37,8 @@ export default function HistoryTable({items}) {
               {/* .toString().slice(0,25) */}
                 <span className='text-xl'>{row.Date.toString().split("T").join(" ").slice(0,-5)}</span>
               </TableCell>
-              <TableCell align="center"><div className='flex justify-around'><img src={row.inputImageURL} alt="" className='max-h-[30vh] max-w-[25vw] rounded-xl'/></div></TableCell>
-              <TableCell align="center"><span className='text-xl max-w-[50vw]'>{row.output}</span></TableCell>
+              <TableCell align="center"><div className='flex justify-around'><img src={row.inputImageURL} alt="" className=' w-[30vw] rounded-xl'/></div></TableCell>
+              <TableCell align="center"><span className='text-xl max-w-[50vw] px-3'>{row.output}</span></TableCell>
             </TableRow>
           ))}
         </TableBody>
