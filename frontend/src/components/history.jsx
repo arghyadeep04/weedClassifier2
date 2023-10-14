@@ -15,6 +15,8 @@ const History=({usertoken,setAlertMessage,setAlertVisible})=> {
     const navigate=useNavigate()
     useEffect(()=>{
       if(!usertoken){
+        setAlertMessage({msg:"You need to log in to get history",type:"error"})
+        setAlertVisible(true)
         navigate("/users/login")
         return
       }

@@ -82,10 +82,10 @@ const SignUp=({setUserToken,setHistory,setAlertMessage,setAlertVisible,usertoken
         }
         if(json.token){
           setUserToken(json.token)
-          setAlertMessage({msg:"Succesfully signed up and logged in",type:"success"})
+          setAlertMessage({msg:`Succesfully signed up and logged in, Welcome ${json.username}`,type:"success"})
           setAlertVisible(true)
         }else{
-          setAlertMessage({msg:"SignUp Failed, Username or password is incorrect",type:"error"})
+          setAlertMessage({msg:"SignUp Failed, Username Alredy exist",type:"error"})
           setAlertVisible(true)
         }
         setLoading(false)

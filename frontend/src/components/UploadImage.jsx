@@ -111,10 +111,11 @@ const UploadImage=({setLoading,setUrl,url,loading,setalert,setvisible,setoutput,
   };
 
   return(
-    <div className="border-[2px] border-blue-500 rounded-2xl bg-blue-800 p-3">
+    <div className="border-[2px] border-blue-500 rounded-2xl bg-blue-700 p-3">
         <div className="flex justify-around p-4 ">
-        <div><h1 className="block mb-2 text-2xl  font-medium text-white rounded-full px-5 py-3 bg-red-900 w-[98%]" htmlFor="file_input">Upload Your Image</h1>
-        <input className="block text-sm border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none  h-10 dark:border-gray-600 text-black w-80 max-w-[90vw]" id="file_input" type="file" onChange={uploadImage} /></div>
+        <div><h1 className="block mb-2 text-2xl  font-medium text-white rounded-full px-5 py-3 bg-orange-600 w-[80vw] md:w-[40vw]" htmlFor="file_input">Upload Your Image</h1>
+        <button className=" border-black border-[2px] text-white rounded-3xl w-40 h-14" onClick={()=>{document.getElementById('file_input').click()}}><img src="https://www.mbsplugins.de/images/drop-files-here-extra.jpg" className="w-full h-full rounded-3xl opacity-80 hover:opacity-100" alt="Upload"/></button>
+        <input className="text-sm border-gray-300 bg-orange-400 cursor-pointer  focus:outline-none  h-10 dark:border-gray-600 text-black w-80 max-w-[90vw] border-[4px] rounded-full hidden" id="file_input" type="file" onChange={uploadImage} /></div>
         </div>
 
         <LoadSpinner loading={loading}/>
