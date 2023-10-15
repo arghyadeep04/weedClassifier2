@@ -10,7 +10,7 @@ import { setMessage, setVisible } from "../redux/alert/alert.action";
 import LoadSpinner from "./loadspinner";
 import { selectuserToken } from "../redux/user/user.selector";
 import { setOutput, setOutputLoading } from "../redux/output/output.action";
-import { addHistory } from "../apis";
+import { addHistory, getoutput } from "../apis";
 
 const UploadImage=({setLoading,setUrl,url,loading,setalert,setvisible,setoutput,setoutputloading,usertoken})=> {
 
@@ -40,6 +40,31 @@ const UploadImage=({setLoading,setUrl,url,loading,setalert,setvisible,setoutput,
     })
   }
     
+  }
+
+  const output=(url)=>{
+    setoutputloading(true)
+    getoutput(url).then((json)=>{
+      let ans=json.answer
+      addHistory(usertoken,{inputImageURL:url,output:ans}).then((json)=>{
+        if(json.networkerror){
+          setalert({msg:"Network Error",type:"error"})
+          setvisible(true)
+          setoutputloading(false)
+        return
+      }
+      if(json.status){
+        alertPage("Pushed output to history")
+        setoutputloading(false)
+        return
+      }
+    }).catch(err=>{
+      setalert({msg:"Network Error",type:"error"})
+        setvisible(true)
+        setoutputloading(false)
+        return
+    })
+    })
   }
 
 

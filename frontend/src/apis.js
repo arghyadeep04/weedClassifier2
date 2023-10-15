@@ -78,3 +78,26 @@ export const getHistory=async(token)=>{
     return json
 
 }
+
+export const getoutput=async(url)=>{
+  let respons=await fetch(`http://localhost:8000/getoutput`, {
+      method: 'GET',
+      headers: {
+          'Accept': '*/*',
+          'Content-Type':'application/json; charset=utf-8',
+          'url': url,
+          'Access-Control-Allow-Origin':"*",
+          'Vary':'Origin'
+
+      },
+      cache: 'default'
+    })
+
+  if(!respons){
+      return {networkerror:"Network Error"}
+    }
+  let json=await respons.json();
+  console.log(json);
+  return json
+
+}
