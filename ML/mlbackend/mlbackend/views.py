@@ -1,8 +1,8 @@
-import sys
-sys.path.append("..")
+import sys,os
+sys.path.append(os.path.join(sys.path[0],'..'))
 from deepweeds import return_back
 import json
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse
 
 def getclass(req):
     url=req.GET.get("url","")

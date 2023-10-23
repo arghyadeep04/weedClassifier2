@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 // import assets from "../assets/assets.gif";
 import axios from "axios";
@@ -13,6 +13,11 @@ import { setOutput, setOutputLoading } from "../redux/output/output.action";
 import { addHistory, getoutput } from "../apis";
 
 const UploadImage=({setLoading,setUrl,url,loading,setalert,setvisible,setoutput,setoutputloading,usertoken})=> {
+// useEffect(()=>{
+//   if(url){
+//     output(url)
+//   }
+// },[url])
 
   const alertPage=(msg)=>{
     setalert({msg,type:"success"})
@@ -46,24 +51,29 @@ const UploadImage=({setLoading,setUrl,url,loading,setalert,setvisible,setoutput,
     setoutputloading(true)
     getoutput(url).then((json)=>{
       let ans=json.answer
-      addHistory(usertoken,{inputImageURL:url,output:ans}).then((json)=>{
-        if(json.networkerror){
-          setalert({msg:"Network Error",type:"error"})
-          setvisible(true)
+      setoutput(ans)
+      setoutputloading(false)
+      if(usertoken){
+
+        addHistory(usertoken,{inputImageURL:url,output:ans}).then((json)=>{
+          if(json.networkerror){
+            setalert({msg:"Network Error",type:"error"})
+            setvisible(true)
           setoutputloading(false)
-        return
-      }
-      if(json.status){
-        alertPage("Pushed output to history")
-        setoutputloading(false)
-        return
-      }
+          return
+        }
+        if(json.status){
+          alertPage("Pushed output to history")
+          setoutputloading(false)
+          return
+        }
     }).catch(err=>{
       setalert({msg:"Network Error",type:"error"})
         setvisible(true)
         setoutputloading(false)
         return
-    })
+      })
+    }
     })
   }
 
@@ -90,7 +100,7 @@ const UploadImage=({setLoading,setUrl,url,loading,setalert,setvisible,setoutput,
       .then((res) => {
         setUrl(res.data);
         alertPage("Image uploaded Succesfully");
-        falseOut(res.data,res.data)
+        output(res.data)
       })
       .then(() => setLoading(false))
       .catch(()=>{
@@ -107,7 +117,7 @@ const UploadImage=({setLoading,setUrl,url,loading,setalert,setvisible,setoutput,
       .then((res) => {
         setUrl(res.data);
         alertPage("Image uploaded Succesfully");
-        falseOut(res.data,res.data)
+        output(res.data)
       })
       .then(() => setLoading(false))
       .catch(()=>{

@@ -80,14 +80,14 @@ export const getHistory=async(token)=>{
 }
 
 export const getoutput=async(url)=>{
-  let respons=await fetch(`http://localhost:8000/getoutput`, {
+  let respons=await fetch(`http://127.0.0.1:8000/getclass?url=${url}`, {
       method: 'GET',
       headers: {
           'Accept': '*/*',
           'Content-Type':'application/json; charset=utf-8',
-          'url': url,
-          'Access-Control-Allow-Origin':"*",
-          'Vary':'Origin'
+          // 'url': url,
+          // 'Access-Control-Allow-Origin':"*",
+          // 'Vary':'Origin'
 
       },
       cache: 'default'

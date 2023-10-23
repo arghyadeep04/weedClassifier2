@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-!gdwmi$ud4cafpmkf$5!x#n)%ss!)k3a)gu06-g-#xm1$*^^vd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS=['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders'
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,8 +52,9 @@ MIDDLEWARE = [
 ]
 
 
-ALLOWED_HOSTS=['*']
-CORS_ORIGIN_ALLOW_ALL = True
+
+
+# CORS_ALLOW_ALL_ORIGINS=True
 
 ROOT_URLCONF = 'mlbackend.urls'
 

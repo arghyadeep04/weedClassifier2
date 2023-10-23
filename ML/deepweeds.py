@@ -380,7 +380,7 @@ def get_image_from_url(url):
     return img
 
 def return_back(url):
-        model = load_model('D:\weedClassifier2\ML\models\mobilenetv2.hdf5')
+        model = load_model('ML\models\mobilenetv2.hdf5')
         img = get_image_from_url(url)
         # Resize to 224x224
         img = resize(img, (224, 224))
