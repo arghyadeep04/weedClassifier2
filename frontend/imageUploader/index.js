@@ -15,14 +15,14 @@ app.use((req, res, next) => {
 app.post("/uploadImage", (req, res) => {
   uploadImage(req.body.image)
     .then((url) => res.send(url))
-    .catch((err) => res.status(500).send(err));
+    .catch((err) => {res.status(500).send(err),console.log(err)});
 });
 
 app.post("/uploadMultipleImages", (req, res) => {
   uploadImage
     .uploadMultipleImages(req.body.images)
     .then((urls) => res.send(urls))
-    .catch((err) => res.status(500).send(err));
+    .catch((err) => {res.status(500).send(err),console.log(err)});
 });
 
 app.listen(port, () => {

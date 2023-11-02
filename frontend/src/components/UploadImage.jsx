@@ -11,10 +11,12 @@ import LoadSpinner from "./loadspinner";
 import { selectuserToken } from "../redux/user/user.selector";
 import { setOutput, setOutputLoading } from "../redux/output/output.action";
 import { addHistory, getoutput } from "../apis";
+import { host } from "../metaData";
+// import '../compression-loop'
 
 const UploadImage=({setLoading,setUrl,url,loading,setalert,setvisible,setoutput,setoutputloading,usertoken})=> {
-// useEffect(()=>{
-//   if(url){
+  // useEffect(()=>{
+    //   if(url){
 //     output(url)
 //   }
 // },[url])
@@ -93,10 +95,10 @@ const UploadImage=({setLoading,setUrl,url,loading,setalert,setvisible,setoutput,
     });
   };
 
-  function uploadSingleImage(base64) {
+  async function uploadSingleImage(base64) {
     setLoading(true);
     axios
-      .post("http://localhost:5000/uploadImage", { image: base64 })
+      .post(`${host}:5000/uploadImage`, { image: base64 })
       .then((res) => {
         setUrl(res.data);
         alertPage("Image uploaded Succesfully");
@@ -110,10 +112,10 @@ const UploadImage=({setLoading,setUrl,url,loading,setalert,setvisible,setoutput,
       });
   }
 
-  function uploadMultipleImages(images) {
+  async function uploadMultipleImages(images) {
     setLoading(true);
     axios
-      .post("http://localhost:5000/uploadMultipleImages", { images })
+      .post(`${host}:5000/uploadMultipleImages`, { images })
       .then((res) => {
         setUrl(res.data);
         alertPage("Image uploaded Succesfully");

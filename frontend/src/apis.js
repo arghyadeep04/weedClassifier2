@@ -1,5 +1,8 @@
+import { host } from "./metaData";
+
+
 export const loginUser=async(form)=>{
-    let respons=await fetch(`http://localhost/users/login`, {
+    let respons=await fetch(`${host}/users/login`, {
         method: 'POST',
         headers: {
             'Accept': '*/*',
@@ -18,7 +21,7 @@ export const loginUser=async(form)=>{
     return json
 }
 export const signupUser=async(form)=>{
-    let respons=await fetch(`http://localhost/users/register`, {
+    let respons=await fetch(`${host}/users/register`, {
         method: 'POST',
         headers: {
             'Accept': '*/*',
@@ -38,7 +41,7 @@ export const signupUser=async(form)=>{
 }
 
 export const addHistory=async(token,object)=>{
-    let respons=await fetch(`http://localhost/users/addtohistory`, {
+    let respons=await fetch(`${host}/users/addtohistory`, {
         method: 'POST',
         headers: {
             'Accept': '*/*',
@@ -59,7 +62,7 @@ export const addHistory=async(token,object)=>{
 }
 
 export const getHistory=async(token)=>{
-    let respons=await fetch(`http://localhost/users/history`, {
+    let respons=await fetch(`${host}/users/history`, {
         method: 'GET',
         headers: {
             'Accept': '*/*',
@@ -80,7 +83,7 @@ export const getHistory=async(token)=>{
 }
 
 export const getoutput=async(url)=>{
-  let respons=await fetch(`http://127.0.0.1:8000/getclass?url=${url}`, {
+  let respons=await fetch(`${host}:8000/getclass?url=${url}`, {
       method: 'GET',
       headers: {
           'Accept': '*/*',

@@ -35,7 +35,7 @@ export default function HistoryCard({date,imageUrl,output}) {
 
   return (
     <div className='md:hidden px-3 my-3 border-[2px] rounded-xl'>
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth:350 }}>
       <CardHeader
         // .toString().slice(0,15)
         title={`Date : ${date.toString().split("T")[0]}`}

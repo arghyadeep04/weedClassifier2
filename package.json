@@ -4,6 +4,6 @@
     "cors": "^2.8.5"
   },
   "scripts": {
-    "start": "concurrently \"nodemon .\\backend\\index.js\"  \"nodemon .\\frontend\\imageUploader\\index.js\" \"python.exe .\\ML\\mlbackend\\manage.py runserver\" \"npm run --prefix .\\frontend\\ start\""
+    "start": "concurrently \"nodemon .\\backend\\index.js\"  \"nodemon .\\frontend\\imageUploader\\index.js\" \"python.exe .\\ML\\mlbackend\\manage.py runserver 0.0.0.0:8000\" \"npm run --prefix .\\frontend\\ start\""
   }
 }
