@@ -1,1 +1,1 @@
-export const host="http://192.168.43.124"
+export const host="http://localhost"

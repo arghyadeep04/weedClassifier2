@@ -89,7 +89,7 @@ userRouter.post('/addtohistory', getUser, async (req, res) => {
       console.log('Decoded token:', decoded); 
   
       
-      if (decoded.id !== req.user._id.toString()) {
+      if (!(req.user) || decoded.id !== req.user._id.toString()) {
         return res.status(401).json({ error: 'Token is not valid for this user' });
       }
   

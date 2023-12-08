@@ -11,7 +11,8 @@ import LoadSpinner from "./loadspinner";
 import { selectuserToken } from "../redux/user/user.selector";
 import { setOutput, setOutputLoading } from "../redux/output/output.action";
 import { addHistory, getoutput } from "../apis";
-import { host } from "../metaData";
+// import { host } from "../metaData";
+const host="http://localhost"
 // import '../compression-loop'
 
 const UploadImage=({setLoading,setUrl,url,loading,setalert,setvisible,setoutput,setoutputloading,usertoken})=> {
