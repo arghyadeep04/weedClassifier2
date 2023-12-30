@@ -1,10 +1,7 @@
+import { cloudinary_config } from '../../secrets';
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
-cloudinary.config({
-    api_key:"978275528915165",
-    api_secret:"orwyUizYDPE-8m2MBNYcimwIhDg",
-    cloud_name:"dpcmfysrj"
-})
+cloudinary.config(cloudinary_config);
 
 const opts={
     overwrie:true,
