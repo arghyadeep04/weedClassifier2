@@ -25,7 +25,7 @@ def return_back(url):
                 shutil.rmtree('predict/images')
         os.makedirs('predict/images')        
         urllib.request.urlretrieve(url, os.path.join("predict/images", "img_file.jpg"))
-        model_name = "lastbest-0-1.hdf5"
+        model_name = "ML\lastbest-0-1.hdf5"
         model = load_model(model_name)
 
         datagen = ImageDataGenerator(rescale=1. / 255)

@@ -6,7 +6,7 @@ from django.http import JsonResponse,HttpResponse
 
 def getclass(req):
     url=req.GET.get("url","")
-    ans="return_back(url)"
+    ans=return_back(url)
     return JsonResponse({'answer':ans})
 
 def home(req):

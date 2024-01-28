@@ -1,4 +1,4 @@
-import { cloudinary_config } from '../../secrets';
+const { cloudinary_config } =require('../../secrets');
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 cloudinary.config(cloudinary_config);
